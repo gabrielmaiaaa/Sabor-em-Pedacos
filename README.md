@@ -6,4 +6,5 @@ Para poder criar o Frontend, foi utilizado os seguinte comando
 
 Já para criar o Backend, foi utilizado o seguinte comando
 - npm i express
-    Para rodar o servidor no Javascript, será utilizado o Nodemon e para isso basta usar o comando "npm i –g nodemon" para baixar o nodemon globalmente na máquina.
+
+Para rodar o servidor no Javascript, será utilizado o Nodemon e para isso basta usar o comando "npm i –g nodemon" para baixar o nodemon globalmente na máquina.
