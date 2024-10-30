@@ -1,4 +1,4 @@
-# Site-de-Lanchonete
+# Sabor em Pedaços
 Site que estou desenvolvendo para a matéria de Engenharia de Software
 
 Para poder criar o Frontend, foi utilizado os seguinte comando
