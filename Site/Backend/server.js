@@ -1,5 +1,5 @@
-const express = require(express); 
-const cors = require(cors);
+const express = require('express'); 
+const cors = require('cors');
 
 // Instância do servidor
 const app = express();
@@ -7,7 +7,7 @@ const app = express();
 // Liberar rota cors
 app.use(cors());
 // Função para extrair os dados do pacote IP
-app.use(express.json())
+app.use(express.json());
 
 // Importar rotas
 const authRoutes = require('./routers/authRoutes');
