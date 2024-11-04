@@ -1,66 +1,132 @@
 /* Estilo básico */
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .navbar {
-    display: flex;
-    align-items: center;
-    background-color: orange;
-    padding: 10px;
-  }
-  
-  .menu-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    margin-right: 10px;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  .search-bar {
-    margin-left: auto;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .banner img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .content {
-    padding: 20px;
-  }
-  
-  .menu-section {
-    margin-top: 20px;
-  }
-  
-  .menu-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
-  
-  .menu-item h3 {
-    margin: 0;
-  }
-  
-  .menu-item p {
-    margin: 5px 0 0;
-  }
-  
-  .menu-image {
-    width: 60px;
-    height: auto;
-    border-radius: 5px;
-  }
-  
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 101, 0);
+  padding: 10px;
+  height: 100%;
+  position: relative;
+  /* z-index: 1010; */
+  justify-content: space-between; /* Espaça os itens */
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1010; /* Sempre acima do menu */
+  color: white;
+}
+
+/* Classe para ocultar links da navbar quando o menu está aberto */
+.hidden {
+  display: none;
+}
+
+/* Links de navegação e barra de busca */
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.search-bar {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  padding: 20px;
+}
+
+.menu-section {
+  margin-top: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.menu-item h3 {
+  margin: 0;
+}
+
+.menu-item p {
+  margin: 5px 0 0;
+}
+
+.menu-image {
+  width: 60px;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Estilos do menu lateral */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: rgb(255, 101, 0);
+  padding:  50px 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu ul li {
+  margin-bottom: 15px;
+}
+
+.side-menu ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.contact-info {
+  color: black;
+  font-weight: bold;
+  text-align: left;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+/* Overlay cinza */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fundo cinza semi-transparente */
+  z-index: 900;
+}
