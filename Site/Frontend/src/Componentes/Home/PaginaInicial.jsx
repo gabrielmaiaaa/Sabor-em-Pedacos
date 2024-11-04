@@ -17,9 +17,9 @@ export default function PaginaInicial() {
         <button className="menu-button" onClick={toggleMenu}>
           {isMenuOpen ? '✖' : '☰'} {/* Alterna entre "☰" e "✖" */}
         </button>
-        <a href="#products" className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Produtos</a>
-        <a href="#menu" className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Cardápio</a>
-        <a href="#cart" className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Minhas Compras</a>
+        <Link to='/produtos' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Produtos</Link>
+        <Link to='/cardapio' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Cardápio</Link>
+        <Link to='/minhascompras' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Minhas Compras</Link>
         <input type="text" placeholder="Buscar" className={`search-bar`} />
       </nav>
 
@@ -27,12 +27,24 @@ export default function PaginaInicial() {
       {isMenuOpen && (
         <div className="side-menu">
           <ul>
-            <li><a href="#products">Produtos</a></li>
-            <li><a href="#menu">Cardápio</a></li>
-            <li><a href="#cart">Minhas Compras</a></li>
-            <li><a href="#order">Meu pedido</a></li>
-            <li><a href="#info">Minhas Informações</a></li>
-            <li><a href="#report">Gerar Relatório</a></li>
+            <li>
+              <Link to='produtos'>Produtos</Link>
+            </li>
+            <li>
+              <Link to='cardapio'>Cardápio</Link>
+            </li>
+            <li>
+              <Link to='minhascompras'>Minhas Compras</Link>
+            </li>
+            <li>
+              <Link to='meupedido'>Meu pedido</Link>
+            </li>
+            <li>
+              <Link to='informacoes'>Minhas Informações</Link>
+            </li>
+            <li>
+              <Link to='relatorio'>Gerar Relatório</Link>
+            </li>
           </ul>
           <div className="contact-info">
             <p>Entre em contato</p>
@@ -48,7 +60,7 @@ export default function PaginaInicial() {
 
       {/* Imagem do banner */}
       <div className="banner">
-        <img src="banner-image.jpg" alt="Banner de Comida" />
+        <img src="Sabores.png" alt="Banner de Comida" />
       </div>
 
       {/* Conteúdo principal */}
