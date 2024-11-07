@@ -1,0 +1,61 @@
+/* Estoque.css */
+
+/* Cor de fundo laranja para o cabeçalho */
+.bg-orange {
+  background-color: orange;
+}
+
+.estoque-container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.back-button {
+  font-size: 1.2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+.btn-edit {
+  background-color: #FF8C00; /* Laranja */
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 5px 10px;
+}
+
+.btn-delete {
+  background-color: #FFD700; /* Amarelo */
+  color: black;
+  border-radius: 8px;
+  border: none;
+  padding: 5px 10px;
+}
+
+.btn-download {
+  background-color: #2e2e2e;
+  color: white;
+  border-radius: 8px;
+  border: none;
+}
+
+.btn-add {
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  border: none;
+}

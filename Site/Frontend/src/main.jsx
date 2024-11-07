@@ -13,6 +13,7 @@ import MeuPedido from './Componentes/Pedidos/MeuPedido.jsx'
 import MinhasCompras from './Componentes/Pedidos/MinhasCompras.jsx'
 import Cardapio from './Componentes/Produto/Cardapio.jsx'
 import Produtos from './Componentes/Produto/Produtos.jsx'
+import AdicionarProdutos from './Componentes/Produto/AdicionarProdutos.jsx'
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: '/produtos',
     element: <Produtos />
+  },
+  {
+    path: '/adicionarProdutos',
+    element: <AdicionarProdutos />
   }
 ]);
 

@@ -1,0 +1,107 @@
+/* AdicionarProduto.css */
+
+/* Faz o contêiner principal ocupar toda a tela */
+.adicionar-produto-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #e0e0e0; /* Cor de fundo para toda a tela */
+}
+
+/* Cabeçalho laranja */
+.header {
+  background-color: #FF8C00;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+/* Centraliza o formulário na tela e define um tamanho máximo */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Estilos do formulário */
+.form-content {
+  width: 80%; /* Aumenta a largura do formulário */
+  max-width: 600px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.rounded-input {
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+textarea.rounded-input {
+  height: 80px;
+}
+
+/* Estilos dos botões de ação */
+.btn-add {
+  background-color: #FF8C00;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-clear {
+  background-color: #FFD700;
+  color: black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-add:hover {
+  background-color: #e07b00;
+}
+
+.btn-clear:hover {
+  background-color: #e0c200;
+}
+
+/* Alinhamento dos botões */
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}

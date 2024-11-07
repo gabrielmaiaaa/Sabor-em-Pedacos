@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Configuracao() {
   return (
-    <div>Configuracao</div>
+    <div>aaaaa</div>
   )
 }

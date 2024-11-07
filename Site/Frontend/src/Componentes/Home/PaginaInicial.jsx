@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/Home/PaginaInicial.css';
 
 export default function PaginaInicial() {
@@ -28,22 +29,25 @@ export default function PaginaInicial() {
         <div className="side-menu">
           <ul>
             <li>
-              <Link to='produtos'>Produtos</Link>
+              <Link to='/produtos'>Produtos</Link>
             </li>
             <li>
-              <Link to='cardapio'>Cardápio</Link>
+              <Link to='/cardapio'>Cardápio</Link>
             </li>
             <li>
-              <Link to='minhascompras'>Minhas Compras</Link>
+              <Link to='/minhascompras'>Minhas Compras</Link>
             </li>
             <li>
-              <Link to='meupedido'>Meu pedido</Link>
+              <Link to='/meupedido'>Meu pedido</Link>
             </li>
             <li>
-              <Link to='informacoes'>Minhas Informações</Link>
+              <Link to='/informacoes'>Minhas Informações</Link>
             </li>
             <li>
-              <Link to='relatorio'>Gerar Relatório</Link>
+              <Link to='/relatorio'>Gerar Relatório</Link>
+            </li>
+            <li>
+              <Link to='/adicionarProdutos'>Adicionar Produto</Link>
             </li>
           </ul>
           <div className="contact-info">
