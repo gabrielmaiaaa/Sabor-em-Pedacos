@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/Produto/Produto.css';
 import { Link } from 'react-router-dom';
+import { ProdutosContext } from '../../ProdutosContext';
 
 export default function Produtos() {
-  const produtos = [
-    { id: '00145', nome: 'Pizza de presunto', categoria: 'Pizza', preco: 'R$35,00', estoque: 'Sim', descricao: 'Pizza simples com molho de tomate' },
-    { id: '05436', nome: 'Coca-Cola', categoria: 'Bebida', preco: 'R$15,00', estoque: 'Não', descricao: 'Coca-Cola de 2 litros' },
-  ];
+  const { produtos } = useContext(ProdutosContext);
+
   return (
     <div className="estoque-container">
       <header className="header bg-orange text-white p-3 d-flex align-items-center">
@@ -48,9 +47,9 @@ export default function Produtos() {
 
         <div className="d-flex justify-content-between mt-3">
           <button className="btn btn-dark btn-download">Baixar Dados CSV</button>
-          <button className="btn btn-primary btn-add">Adicionar Itens</button>
+          <button className="btn btn-primary btn-add"><Link to="/adicionarProdutos">Adicionar Itens</Link></button>
         </div>
       </div>
     </div>
-  )
+  );
 }
