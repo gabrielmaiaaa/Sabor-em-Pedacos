@@ -46,9 +46,6 @@ export default function PaginaInicial() {
             <li>
               <Link to='/relatorio'>Gerar Relatório</Link>
             </li>
-            <li>
-              <Link to='/adicionarProdutos'>Adicionar Produto</Link>
-            </li>
           </ul>
           <div className="contact-info">
             <p>Entre em contato</p>
