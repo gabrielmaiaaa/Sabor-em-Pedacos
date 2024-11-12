@@ -14,7 +14,7 @@ time.sleep(1)
 navegador.find_element(By.XPATH, '/html/body/div/div/div/div/button[2]/a').click()
 time.sleep(1)
 
-# Registrando um produto
+# Cadastrar produto
 # ID do produto
 navegador.find_element(By.XPATH, '/html/body/div/div/div/div/form/div[1]/input').send_keys('58468')
 time.sleep(1)
@@ -37,3 +37,4 @@ time.sleep(1)
 # Verificar se foi registrado
 navegador.find_element(By.XPATH, '/html/body/div/div/header/button/a').click()
 time.sleep(1)
+
