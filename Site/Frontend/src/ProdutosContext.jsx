@@ -1,20 +1,39 @@
-// src/ProdutosContext.js
+// ProdutosContext.js
 import React, { createContext, useState } from 'react';
 
 export const ProdutosContext = createContext();
 
 export function ProdutosProvider({ children }) {
   const [produtos, setProdutos] = useState([
-    { id: '00145', nome: 'Pizza de presunto', categoria: 'Pizza', preco: 'R$35,00', estoque: 'Sim', descricao: 'Pizza simples com molho de tomate' },
-    { id: '05436', nome: 'Coca-Cola', categoria: 'Bebida', preco: 'R$15,00', estoque: 'Não', descricao: 'Coca-Cola de 2 litros' },
+    { id: 1, nome: 'Pizza Margherita', descricao: 'Tomate, mussarela e manjericão', categoria: 'Pizza' },
+    { id: 2, nome: 'Pizza Calabresa', descricao: 'Calabresa, cebola e azeitonas', categoria: 'Pizza' },
+    { id: 3, nome: 'Refrigerante', descricao: 'Lata de refrigerante', categoria: 'Bebida' },
+    { id: 4, nome: 'Suco de Laranja', descricao: 'Suco natural de laranja', categoria: 'Bebida' },
+    // Adicione mais produtos conforme necessário
   ]);
+  
+  const [produtoEdicao, setProdutoEdicao] = useState(null);
 
-  const adicionarProduto = (novoProduto) => {
-    setProdutos([...produtos, novoProduto]);
+  const adicionarProduto = (produto) => {
+    setProdutos([...produtos, produto]);
+  };
+
+  const carregarProdutoParaEdicao = (id) => {
+    const produto = produtos.find((p) => p.id === id);
+    setProdutoEdicao(produto);
+  };
+
+  const atualizarProduto = (produtoEditado) => {
+    setProdutos(produtos.map((p) => (p.id === produtoEditado.id ? produtoEditado : p)));
+    setProdutoEdicao(null); // Limpa o estado após edição
+  };
+  
+  const deletarProduto = (produtoId) => {
+    setProdutos(produtos.filter(produto => produto.id !== produtoId));
   };
 
   return (
-    <ProdutosContext.Provider value={{ produtos, adicionarProduto }}>
+    <ProdutosContext.Provider value={{ produtos, adicionarProduto, carregarProdutoParaEdicao, atualizarProduto, produtoEdicao, deletarProduto }}>
       {children}
     </ProdutosContext.Provider>
   );

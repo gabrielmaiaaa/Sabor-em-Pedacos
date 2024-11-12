@@ -1,12 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/Produto/AdicionarProdutos.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ProdutosContext } from '../../ProdutosContext';
 
 export default function AdicionarProdutos() {
-  const { adicionarProduto } = useContext(ProdutosContext);
-  const [novoProduto, setNovoProduto] = useState({
+  const { adicionarProduto, atualizarProduto, produtoEdicao } = useContext(ProdutosContext);
+  const navigate = useNavigate();
+
+  const [produto, setProduto] = useState({
     id: '',
     nome: '',
     categoria: 'Pizza',
@@ -15,14 +17,33 @@ export default function AdicionarProdutos() {
     descricao: '',
   });
 
+  const [erro, setErro] = useState(''); // Estado para mensagem de erro
+
+  useEffect(() => {
+    if (produtoEdicao) {
+      setProduto(produtoEdicao); // Carrega o produto no formulário para edição
+    }
+  }, [produtoEdicao]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setNovoProduto({ ...novoProduto, [name]: value });
+    setProduto({ ...produto, [name]: value });
   };
 
   const handleSubmit = () => {
-    adicionarProduto(novoProduto);
-    setNovoProduto({
+    // Verifica se os campos obrigatórios estão preenchidos
+    if (!produto.id || !produto.nome || !produto.preco || !produto.descricao) {
+      setErro('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    if (produtoEdicao) {
+      atualizarProduto(produto); // Atualiza o produto existente
+    } else {
+      adicionarProduto(produto); // Adiciona um novo produto
+    }
+
+    setProduto({
       id: '',
       nome: '',
       categoria: 'Pizza',
@@ -30,13 +51,15 @@ export default function AdicionarProdutos() {
       estoque: 'Sim',
       descricao: '',
     });
+    setErro(''); // Limpa a mensagem de erro
+    navigate('/produtos'); // Redireciona para a página de produtos
   };
 
   return (
     <div className="adicionar-produto-container">
       <header className="header">
         <button className="back-button"><Link to="/produtos">←</Link></button>
-        <h1>Adicionar Produto</h1>
+        <h1>{produtoEdicao ? 'Editar Produto' : 'Adicionar Produto'}</h1>
       </header>
 
       <div className="form-container">
@@ -44,15 +67,15 @@ export default function AdicionarProdutos() {
           <form>
             <div>
               <label className="form-label">IDProduto</label>
-              <input type="text" name="id" value={novoProduto.id} onChange={handleChange} className="form-control rounded-input" />
+              <input type="number" name="id" value={produto.id} onChange={handleChange} className="form-control rounded-input" />
             </div>
             <div>
               <label className="form-label">Nome</label>
-              <input type="text" name="nome" value={novoProduto.nome} onChange={handleChange} className="form-control rounded-input" />
+              <input type="text" name="nome" value={produto.nome} onChange={handleChange} className="form-control rounded-input" />
             </div>
             <div>
               <label className="form-label">Categoria</label>
-              <select name="categoria" value={novoProduto.categoria} onChange={handleChange} className="form-control rounded-input">
+              <select name="categoria" value={produto.categoria} onChange={handleChange} className="form-control rounded-input">
                 <option>Pizza</option>
                 <option>Bebida</option>
                 <option>Outro</option>
@@ -60,15 +83,16 @@ export default function AdicionarProdutos() {
             </div>
             <div>
               <label className="form-label">Preço</label>
-              <input type="text" name="preco" value={novoProduto.preco} onChange={handleChange} className="form-control rounded-input" />
+              <input type="number" name="preco" value={produto.preco} onChange={handleChange} className="form-control rounded-input" />
             </div>
             <div>
               <label className="form-label">Descrição</label>
-              <textarea name="descricao" value={novoProduto.descricao} onChange={handleChange} className="form-control rounded-input" rows="3"></textarea>
+              <textarea name="descricao" value={produto.descricao} onChange={handleChange} className="form-control rounded-input" rows="3"></textarea>
             </div>
+            {erro && <p className="text-danger">{erro}</p>} {/* Exibe mensagem de erro */}
             <div className="button-container">
-              <button type="button" onClick={handleSubmit} className="btn btn-add">Adicionar</button>
-              <button type="reset" className="btn btn-clear" onClick={() => setNovoProduto({ id: '', nome: '', categoria: 'Pizza', preco: '', estoque: 'Sim', descricao: '' })}>Limpar</button>
+              <button type="button" onClick={handleSubmit} className="btn btn-add">{produtoEdicao ? 'Salvar Alterações' : 'Adicionar'}</button>
+              <button type="reset" className="btn btn-clear" onClick={() => setProduto({ id: '', nome: '', categoria: 'Pizza', preco: '', estoque: 'Sim', descricao: '' })}>Limpar</button>
             </div>
           </form>
         </div>

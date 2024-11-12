@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/Produto/Produto.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ProdutosContext } from '../../ProdutosContext';
 
 export default function Produtos() {
-  const { produtos } = useContext(ProdutosContext);
+  const { produtos, carregarProdutoParaEdicao, deletarProduto  } = useContext(ProdutosContext);
+  const navigate = useNavigate();
+
+  const handleEdit = (id) => {
+    carregarProdutoParaEdicao(id);
+    navigate('/adicionarProdutos'); // Redireciona para a página de edição
+  };
 
   return (
     <div className="estoque-container">
@@ -37,8 +43,8 @@ export default function Produtos() {
                 <td>{produto.estoque}</td>
                 <td>{produto.descricao}</td>
                 <td>
-                  <button className="btn btn-edit me-2">Editar</button>
-                  <button className="btn btn-delete">Deletar</button>
+                  <button className="btn btn-edit me-2" onClick={() => handleEdit(produto.id)}>Editar</button>
+                  <button className="btn btn-delete" onClick={() => deletarProduto(produto.id)}>Deletar</button>
                 </td>
               </tr>
             ))}
