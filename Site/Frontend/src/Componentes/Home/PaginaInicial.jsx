@@ -51,6 +51,7 @@ export default function PaginaInicial() {
               <li><Link to='/meupedido'>Meu pedido</Link></li>
               <li><Link to='/informacoes'>Minhas Informações</Link></li>
               <li><Link to='/relatorio'>Gerar Relatório</Link></li>
+              <li><Link to="/cadastro">Cadastrar</Link></li>
             </ul>
             <div className="contact-info">
               <p>Entre em contato</p>

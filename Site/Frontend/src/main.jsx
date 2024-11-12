@@ -6,6 +6,7 @@ import './index.css';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ProdutosProvider } from './ProdutosContext';
+import { UsuarioProvider } from './UsuarioContext.jsx'
 
 import CreateUser from './Componentes/Auth/CreateUser.jsx';
 import LoginUser from './Componentes/Auth/LoginUser.jsx';
@@ -66,7 +67,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ProdutosProvider>
-    <RouterProvider router={router} />
-  </ProdutosProvider>
+  <UsuarioProvider>
+    <ProdutosProvider>
+      <RouterProvider router={router} />
+    </ProdutosProvider>
+  </UsuarioProvider>
 );
