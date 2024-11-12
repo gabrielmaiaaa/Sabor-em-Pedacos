@@ -35,7 +35,7 @@ export default function AdicionarProdutos() {
   return (
     <div className="adicionar-produto-container">
       <header className="header">
-        <button className="back-button"><Link to="/">←</Link></button>
+        <button className="back-button"><Link to="/produtos">←</Link></button>
         <h1>Adicionar Produto</h1>
       </header>
 
