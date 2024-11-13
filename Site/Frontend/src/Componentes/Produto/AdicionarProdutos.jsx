@@ -92,7 +92,7 @@ export default function AdicionarProdutos() {
             {erro && <p className="text-danger">{erro}</p>} {/* Exibe mensagem de erro */}
             <div className="button-container">
               <button type="button" onClick={handleSubmit} className="btn btn-add">{produtoEdicao ? 'Salvar Alterações' : 'Adicionar'}</button>
-              <button type="reset" className="btn btn-clear" onClick={() => setProduto({ id: '', nome: '', categoria: 'Pizza', preco: '', estoque: 'Sim', descricao: '' })}>Limpar</button>
+              <button type="reset" className="btn btn-clear" onClick={() => setProduto({ ...produto, nome: '', categoria: 'Pizza', preco: '', estoque: 'Sim', descricao: '' })}>Limpar</button>
             </div>
           </form>
         </div>

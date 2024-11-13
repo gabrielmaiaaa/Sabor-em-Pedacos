@@ -16,7 +16,6 @@ export default function LoginUser() {
     e.preventDefault();
     const sucesso = fazerLogin(email, password);
     if (sucesso) {
-      alert("Login bem-sucedido!");
       navigate('/'); // Redireciona para a página inicial após login bem-sucedido
     } else {
       setError("E-mail ou senha incorretos.");

@@ -36,8 +36,6 @@ export default function CreateUser() {
     // Adicionar o novo usuário ao contexto
     adicionarUsuario(userData);
 
-    alert("Cadastro realizado com sucesso!");
-
     // Redirecionar para a página inicial ou outra página após o cadastro
     navigate('/login');
   };
