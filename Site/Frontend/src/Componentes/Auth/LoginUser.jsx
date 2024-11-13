@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UsuarioContext } from '../../UsuarioContext';
 
 export default function LoginUser() {
-  const { usuarios } = useContext(UsuarioContext); // Acessando o contexto
+  const { fazerLogin } = useContext(UsuarioContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -14,13 +14,8 @@ export default function LoginUser() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
-    // Busca o usuário pelo e-mail e valida a senha
-    const usuarioEncontrado = usuarios.find(
-      (usuario) => usuario.email === email && usuario.password === password
-    );
-
-    if (usuarioEncontrado) {
+    const sucesso = fazerLogin(email, password);
+    if (sucesso) {
       alert("Login bem-sucedido!");
       navigate('/'); // Redireciona para a página inicial após login bem-sucedido
     } else {

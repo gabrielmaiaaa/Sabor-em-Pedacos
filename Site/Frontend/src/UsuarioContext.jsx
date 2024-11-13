@@ -8,6 +8,7 @@ export const UsuarioContext = createContext();
 // Provedor do contexto
 export const UsuarioProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([]);
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
 
   // Função para adicionar um novo usuário
   const adicionarUsuario = (novoUsuario) => {
@@ -15,19 +16,36 @@ export const UsuarioProvider = ({ children }) => {
   };
 
   // Função para atualizar um usuário existente
-  const atualizarUsuario = (id, usuarioAtualizado) => {
-    setUsuarios(usuarios.map((usuario) => 
-      usuario.id === id ? { ...usuario, ...usuarioAtualizado } : usuario
-    ));
+  const atualizarUsuarioLogado = (dadosAtualizados) => {
+    if (usuarioLogado) {
+      const usuariosAtualizados = usuarios.map((usuario) =>
+        usuario.email === usuarioLogado.email ? { ...usuario, ...dadosAtualizados } : usuario
+      );
+      setUsuarios(usuariosAtualizados);
+      setUsuarioLogado({ ...usuarioLogado, ...dadosAtualizados });
+    }
   };
 
-  // Função para deletar um usuário
-  const deletarUsuario = (id) => {
-    setUsuarios(usuarios.filter((usuario) => usuario.id !== id));
+  const deletarUsuarioLogado = () => {
+    if (usuarioLogado) {
+      setUsuarios(usuarios.filter((usuario) => usuario.email !== usuarioLogado.email));
+      setUsuarioLogado(null);
+    }
+  };
+
+  const fazerLogin = (email, senha) => {
+    const usuarioEncontrado = usuarios.find(
+      (usuario) => usuario.email === email && usuario.password === senha
+    );
+    if (usuarioEncontrado) {
+      setUsuarioLogado(usuarioEncontrado);
+      return true;
+    }
+    return false;
   };
 
   return (
-    <UsuarioContext.Provider value={{ usuarios, adicionarUsuario, atualizarUsuario, deletarUsuario }}>
+    <UsuarioContext.Provider value={{ usuarios, adicionarUsuario, atualizarUsuarioLogado, deletarUsuarioLogado, usuarioLogado, setUsuarioLogado, fazerLogin }}>
       {children}
     </UsuarioContext.Provider>
   );
