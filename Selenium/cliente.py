@@ -53,3 +53,18 @@ navegador.find_element(By.XPATH, '/html/body/div/div/nav/button').click()
 time.sleep(1)
 navegador.find_element(By.XPATH, '/html/body/div/div/div[1]/ul/li[5]/a').click()
 time.sleep(1)
+
+# Editar Dados
+navegador.find_element(By.XPATH, '/html/body/div/div/div/form/div/button[1]').click()
+time.sleep(1)
+# Endereço do cliente
+navegador.find_element(By.XPATH, '//*[@id="address"]').clear() 
+time.sleep(0.5)
+navegador.find_element(By.XPATH, '//*[@id="address"]').send_keys('Rua Josezin, Bairro Cardoso, 1400')
+time.sleep(0.5)
+navegador.find_element(By.XPATH, '/html/body/div/div/div/form/div/button[1]').click()
+time.sleep(2)
+
+# Deletar Usuario
+navegador.find_element(By.XPATH, '/html/body/div/div/div/form/div/button[2]').click()
+time.sleep(2)
