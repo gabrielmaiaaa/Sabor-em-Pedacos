@@ -5,10 +5,10 @@ export const ProdutosContext = createContext();
 
 export function ProdutosProvider({ children }) {
   const [produtos, setProdutos] = useState([
-    { id: 1, nome: 'Pizza Margherita', descricao: 'Tomate, mussarela e manjericão', categoria: 'Pizza' },
-    { id: 2, nome: 'Pizza Calabresa', descricao: 'Calabresa, cebola e azeitonas', categoria: 'Pizza' },
-    { id: 3, nome: 'Refrigerante', descricao: 'Lata de refrigerante', categoria: 'Bebida' },
-    { id: 4, nome: 'Suco de Laranja', descricao: 'Suco natural de laranja', categoria: 'Bebida' },
+    { id: 1, nome: 'Pizza Margherita', descricao: 'Tomate, mussarela e manjericão', categoria: 'Pizza', preco: '37.50', estoque: 'Sim', quantidade:'', descricaoPersonalizada: ''},
+    { id: 2, nome: 'Pizza Calabresa', descricao: 'Calabresa, cebola e azeitonas', categoria: 'Pizza', preco: '37.50', estoque: 'Não', quantidade:'', descricaoPersonalizada: ''},
+    { id: 3, nome: 'Refrigerante', descricao: 'Lata de refrigerante', categoria: 'Bebida', preco: '10.00', estoque: 'Sim', quantidade:'', descricaoPersonalizada: ''},
+    { id: 4, nome: 'Suco de Laranja', descricao: 'Suco natural de laranja', categoria: 'Bebida', preco: '7.50', estoque: 'Sim', quantidade:'', descricaoPersonalizada: ''},
     // Adicione mais produtos conforme necessário
   ]);
   

@@ -135,3 +135,18 @@ body {
   background: rgba(0, 0, 0, 0.5); /* Fundo cinza semi-transparente */
   z-index: 900;
 }
+
+.btn-adicionar {
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  border-radius: 8px;
+  padding: 10px 15px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
+
+.btn-adicionar:hover {
+  background-color: #0056b3; 
+}

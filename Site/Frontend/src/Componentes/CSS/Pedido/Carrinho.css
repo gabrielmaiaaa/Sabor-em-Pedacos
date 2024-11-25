@@ -1,0 +1,148 @@
+/* Estilo principal */
+.carrinho-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .carrinho-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ff6600;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .btn-voltar {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  
+  .carrinho-content h2 {
+    margin-top: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .carrinho-lista {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .carrinho-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .carrinho-produto p {
+    margin: 5px 0;
+  }
+  
+  .produto-detalhes {
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  /* Botões */
+  .btn-editar,
+  .btn-deletar {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .btn-editar {
+    background-color: #ff6600;
+    color: white;
+  }
+  
+  .btn-deletar {
+    background-color: #ffcc00;
+    color: black;
+  }
+  
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .modal-acoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  
+  
+  /* Botões */
+  .btn-editar,
+  .btn-deletar {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .btn-editar {
+    background-color: #ff6600;
+    color: white;
+  }
+  
+  .btn-deletar {
+    background-color: #ffcc00;
+    color: black;
+  }
+  
+  /* Ações */
+  .carrinho-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .btn-limpar {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-confirmar {
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  

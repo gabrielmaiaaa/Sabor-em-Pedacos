@@ -6,7 +6,9 @@ import './index.css';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ProdutosProvider } from './ProdutosContext';
-import { UsuarioProvider } from './UsuarioContext.jsx'
+import { UsuarioProvider } from './UsuarioContext.jsx';
+import { CarrinhoProvider } from './CarrinhoContext';
+import { HistoricoProvider } from './HistoricoContext';
 
 import CreateUser from './Componentes/Auth/CreateUser.jsx';
 import LoginUser from './Componentes/Auth/LoginUser.jsx';
@@ -14,8 +16,8 @@ import Configuracao from './Componentes/Home/Configuracao.jsx';
 import RealizarRelatorio from './Componentes/Home/RealizarRelatorio.jsx';
 import MinhasInformacoes from './Componentes/Home/MinhasInformacoes.jsx';
 import MeuPedido from './Componentes/Pedidos/MeuPedido.jsx';
-import MinhasCompras from './Componentes/Pedidos/MinhasCompras.jsx';
-import Cardapio from './Componentes/Produto/Cardapio.jsx';
+import Carrinho from './Componentes/Pedidos/Carrinho.jsx';
+import Historico from './Componentes/Produto/Historico.jsx';
 import Produtos from './Componentes/Produto/Produtos.jsx';
 import AdicionarProdutos from './Componentes/Produto/AdicionarProdutos.jsx';
 
@@ -49,12 +51,12 @@ const router = createBrowserRouter([
     element: <MeuPedido />
   },
   {
-    path: '/minhascompras',
-    element: <MinhasCompras />
+    path: '/carrinho',
+    element: <Carrinho />
   },
   {
-    path: '/cardapio',
-    element: <Cardapio />
+    path: '/historico',
+    element: <Historico />
   },
   {
     path: '/produtos',
@@ -69,7 +71,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <UsuarioProvider>
     <ProdutosProvider>
-      <RouterProvider router={router} />
+      <CarrinhoProvider>
+        <HistoricoProvider>
+          <RouterProvider router={router} />
+        </HistoricoProvider>
+      </CarrinhoProvider>
     </ProdutosProvider>
   </UsuarioProvider>
 );

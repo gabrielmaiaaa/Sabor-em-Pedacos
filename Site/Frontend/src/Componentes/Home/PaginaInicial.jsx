@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/Home/PaginaInicial.css';
 import { ProdutosContext } from '../../ProdutosContext';
+import { CarrinhoContext } from '../../CarrinhoContext';
 
 export default function PaginaInicial() {
   const { produtos } = useContext(ProdutosContext);
+  const { adicionarAoCarrinho } = useContext(CarrinhoContext);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -21,6 +23,10 @@ export default function PaginaInicial() {
     return null; // Ignorar produtos que não correspondem ao termo de busca
   }).filter(Boolean); // Remove os valores `null` do array
 
+  const handleAdicionarAoCarrinho = (produto) => {
+    adicionarAoCarrinho({ ...produto, quantidade: 1 });
+  };
+
   return (
     <>
       <div className="App">
@@ -30,8 +36,8 @@ export default function PaginaInicial() {
             {isMenuOpen ? '✖' : '☰'}
           </button>
           <Link to='/produtos' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Produtos</Link>
-          <Link to='/cardapio' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Cardápio</Link>
-          <Link to='/minhascompras' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Minhas Compras</Link>
+          <Link to='/historico' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Histórico</Link>
+          <Link to='/carrinho' className={`navbar-link ${isMenuOpen ? 'hidden' : ''}`}>Minhas Compras</Link>
           <input
             type="text"
             placeholder="Buscar"
@@ -46,8 +52,8 @@ export default function PaginaInicial() {
           <div className="side-menu">
             <ul>
               <li><Link to='/produtos'>Produtos</Link></li>
-              <li><Link to='/cardapio'>Cardápio</Link></li>
-              <li><Link to='/minhascompras'>Minhas Compras</Link></li>
+              <li><Link to='/historico'>Histórico</Link></li>
+              <li><Link to='/carrinho'>Minhas Compras</Link></li>
               <li><Link to='/meupedido'>Meu pedido</Link></li>
               <li><Link to='/informacoes'>Minhas Informações</Link></li>
               <li><Link to='/relatorio'>Gerar Relatório</Link></li>
@@ -73,17 +79,19 @@ export default function PaginaInicial() {
 
         {/* Conteúdo principal */}
         <main className="content">
-          {/* Seção de pizzas */}
           <section className="menu-section">
-            <h2>Pizzas</h2>
+            <h2>Produtos</h2>
             {filteredProdutos.map((produto) => (
               produto.categoria === 'Pizza' && (
-                <div key={produto.id} className="menu-item">
-                  <div>
-                    <h3>{produto.nome}</h3>
-                    <p>{produto.descricao}</p>
-                  </div>
+              <div key={produto.id} className="menu-item">
+                <div>
+                  <h3>{produto.nome}</h3>
+                  <p>{produto.descricao}</p>
+                  <button className="btn-adicionar" onClick={() => handleAdicionarAoCarrinho(produto)}>
+                    Adicionar ao Carrinho
+                  </button>
                 </div>
+              </div>
               )
             ))}
           </section>
@@ -97,6 +105,9 @@ export default function PaginaInicial() {
                   <div>
                     <h3>{produto.nome}</h3>
                     <p>{produto.descricao}</p>
+                    <button className="btn-adicionar" onClick={() => handleAdicionarAoCarrinho(produto)}>
+                      Adicionar ao Carrinho
+                    </button>
                   </div>
                 </div>
               )

@@ -1,0 +1,66 @@
+.historico-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .historico-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ff6600;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .btn-voltar {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    color: orange;
+  }
+  
+  .historico-content {
+    border: 1px solid #000;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .pedido-card {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .pedido-card p {
+    margin: 5px 0;
+  }
+  
+  .produtos-lista {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .btn-apagar {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-apagar:hover {
+    background-color: #e69500;
+  }
+  
