@@ -45,7 +45,6 @@ export default function Carrinho() {
 
     adicionarPedidoAoHistorico(novoPedido); // Salvar no histórico
     limparCarrinho(); // Limpar o carrinho
-    alert("Pedido confirmado e salvo no histórico!");
   };
 
   return (
@@ -94,7 +93,7 @@ export default function Carrinho() {
             </ul>
             <div className="carrinho-actions">
               <button className="btn-limpar" onClick={limparCarrinho}>
-                Limpar
+                Cancelar
               </button>
               <button className="btn-confirmar" onClick={handleConfirmarPedido}>
                 Confirmar Pedido
