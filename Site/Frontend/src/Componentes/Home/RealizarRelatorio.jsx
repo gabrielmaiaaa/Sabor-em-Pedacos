@@ -15,8 +15,15 @@ export default function RealizarRelatorio() {
   const [graficoLucroDados, setGraficoLucroDados] = useState({});
   const [descricao, setDescricao] = useState("");
   const [lucroDescricao, setLucroDescricao] = useState("");
+  const [selecionarVendas, setSelecionarVendas] = useState(false);
+  const [selecionarLucro, setSelecionarLucro] = useState(false);
 
   const gerarRelatorio = () => {
+    if (!selecionarVendas && !selecionarLucro) {
+      alert("Selecione pelo menos um tipo de relatório para gerar.");
+      return;
+    }
+
     if (historico.length === 0) {
       alert("Nenhum dado disponível para gerar o relatório.");
       return;
@@ -38,62 +45,65 @@ export default function RealizarRelatorio() {
       });
     });
 
-    // Calcular lucro total
-    const lucroTotal = Object.values(produtosLucro).reduce(
-      (acc, curr) => acc + curr,
-      0
-    );
+    // Preparar os gráficos e descrições somente se o checkbox correspondente estiver selecionado
+    if (selecionarVendas) {
+      const labels = Object.keys(produtosQuantidades);
+      const dataVendas = Object.values(produtosQuantidades);
 
-    // Preparar os dados para o gráfico de vendas
-    const labels = Object.keys(produtosQuantidades);
-    const dataVendas = Object.values(produtosQuantidades);
+      setGraficoVendasDados({
+        labels,
+        datasets: [
+          {
+            label: "Quantidade Vendida",
+            data: dataVendas,
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+          },
+        ],
+      });
 
-    setGraficoVendasDados({
-      labels,
-      datasets: [
-        {
-          label: "Quantidade Vendida",
-          data: dataVendas,
-          backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
-        },
-      ],
-    });
+      const textoDescricao = labels
+        .map((label, index) => {
+          return `O ${label} teve uma quantidade de ${dataVendas[index]} compras.`;
+        })
+        .join(" ");
 
-    // Preparar os dados para o gráfico de lucro
-    const dataLucro = Object.values(produtosLucro);
+      setDescricao(textoDescricao);
+    }
 
-    setGraficoLucroDados({
-      labels,
-      datasets: [
-        {
-          label: "Lucro (R$)",
-          data: dataLucro,
-          backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
-        },
-      ],
-    });
+    if (selecionarLucro) {
+      const labels = Object.keys(produtosLucro);
+      const dataLucro = Object.values(produtosLucro);
 
-    // Gerar a descrição com base nos dados
-    const textoDescricao = labels
-      .map((label, index) => {
-        return `O ${label} teve uma quantidade de ${dataVendas[index]} compras.`;
-      })
-      .join(" ");
+      setGraficoLucroDados({
+        labels,
+        datasets: [
+          {
+            label: "Lucro (R$)",
+            data: dataLucro,
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"],
+          },
+        ],
+      });
 
-    // Gerar descrição de lucro
-    const textoLucro = labels
-      .map((label) => {
-        return `O ${label} gerou um total de R$${produtosLucro[label].toFixed(
-          2
-        )}.`;
-      })
-      .join(" ");
-    const textoLucroFinal = `${textoLucro} O lucro total foi de R$${lucroTotal.toFixed(
-      2
-    )}.`;
+      const lucroTotal = Object.values(produtosLucro).reduce(
+        (acc, curr) => acc + curr,
+        0
+      );
 
-    setDescricao(textoDescricao);
-    setLucroDescricao(textoLucroFinal);
+      const textoLucro = labels
+        .map((label) => {
+          return `O ${label} gerou um total de R$${produtosLucro[label].toFixed(
+            2
+          )}.`;
+        })
+        .join(" ");
+      const textoLucroFinal = `${textoLucro} O lucro total foi de R$${lucroTotal.toFixed(
+        2
+      )}.`;
+
+      setLucroDescricao(textoLucroFinal);
+    }
+
     setDadosGerados(true);
   };
 
@@ -109,11 +119,19 @@ export default function RealizarRelatorio() {
         <h2>Quais relatórios você quer gerar?</h2>
         <div className="checkbox-container">
           <label>
-            <input type="checkbox" checked readOnly />
+            <input
+              type="checkbox"
+              checked={selecionarVendas}
+              onChange={() => setSelecionarVendas(!selecionarVendas)}
+            />
             Vendas
           </label>
           <label>
-            <input type="checkbox" checked readOnly />
+            <input
+              type="checkbox"
+              checked={selecionarLucro}
+              onChange={() => setSelecionarLucro(!selecionarLucro)}
+            />
             Lucro
           </label>
         </div>
@@ -122,16 +140,24 @@ export default function RealizarRelatorio() {
         </button>
         {dadosGerados && (
           <div className="grafico-container">
-            <h3>Vendas</h3>
-            <div style={{ maxWidth: "400px", margin: "0 auto" }}>
-              <Pie data={graficoVendasDados} />
-            </div>
-            <p className="grafico-descricao">{descricao}</p>
-            <h3>Lucro</h3>
-            <div style={{ maxWidth: "400px", margin: "0 auto" }}>
-              <Bar data={graficoLucroDados} />
-            </div>
-            <p className="grafico-descricao">{lucroDescricao}</p>
+            {selecionarVendas && (
+              <>
+                <h3>Vendas</h3>
+                <div style={{ maxWidth: "400px", margin: "0 auto" }}>
+                  <Pie data={graficoVendasDados} />
+                </div>
+                <p className="grafico-descricao">{descricao}</p>
+              </>
+            )}
+            {selecionarLucro && (
+              <>
+                <h3>Lucro</h3>
+                <div style={{ maxWidth: "400px", margin: "0 auto" }}>
+                  <Bar data={graficoLucroDados} />
+                </div>
+                <p className="grafico-descricao">{lucroDescricao}</p>
+              </>
+            )}
           </div>
         )}
       </div>
