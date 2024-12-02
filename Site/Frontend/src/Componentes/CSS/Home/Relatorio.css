@@ -1,0 +1,66 @@
+.relatorio-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .relatorio-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .btn-voltar {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    color: orange;
+  }
+  
+  .relatorio-content {
+    border: 1px solid #000;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .checkbox-container {
+    margin: 10px 0;
+  }
+  
+  .checkbox-container label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-gerar {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-gerar:hover {
+    background-color: #0056b3;
+  }
+  
+  .grafico-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .grafico-descricao {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  

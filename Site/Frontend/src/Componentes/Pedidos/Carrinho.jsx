@@ -42,6 +42,8 @@ export default function Carrinho() {
       data: new Date().toLocaleString(), // Data e hora do pedido
       produtos: [...carrinho], // Clonar os itens do carrinho
     };
+    console.log(novoPedido);
+    
 
     adicionarPedidoAoHistorico(novoPedido); // Salvar no histórico
     limparCarrinho(); // Limpar o carrinho
